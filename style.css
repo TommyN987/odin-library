@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+h1 {
+  font-family: 'MedievalSharp'!important;
+  font-weight: bold;
+}
+
+.navbar>.container-fluid {
+  flex-wrap: nowrap;
+}
+
+main {
+  height: 100vh;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.btn-outline-dark:hover {
+  color: #ffc107;
+}
