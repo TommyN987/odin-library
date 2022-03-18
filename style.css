@@ -61,3 +61,7 @@ button {
   bottom: 5%;
   right: 5%;
 }
+
+#container {
+  gap: 0rem;
+}

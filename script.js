@@ -1,5 +1,5 @@
 /* ************************************
-** Constructor
+** Movie constructor
 ************************************** */
 
 class Movie {
@@ -53,8 +53,8 @@ const createMovie = () => {
 }
 
 const renderMovie = (movie) => {
-  container.insertAdjacentHTML("afterbegin", `
-    <div class="col-md-6 col-lg-3 card bg-dark bg-gradient border-warning" id="${movie.id}">
+  container.insertAdjacentHTML("afterbegin",
+    `<div class="col-md-6 col-lg-3 card bg-dark bg-gradient border-warning" id="${movie.id}">
       <div class="card-header pt-4">
         <h5 class="card-title">${movie.title}</h5>
         <h6 class="card-subtitle mb-2">${movie.director}</h6>
@@ -63,33 +63,51 @@ const renderMovie = (movie) => {
       <div class="card-body">
         <p class="card-text">${movie.info()}</p>
         <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-success mx-1"></button>
+          <button type="button" class="btn btn-success mx-1" id="btn-seen"></button>
           <button type="button" class="btn btn-danger mx-1">Delete</button>
         </div>
       </div>
     </div>`
   )
+
   const btnRemove = document.querySelector('.btn-danger');
+  const btnSeen = document.getElementById('btn-seen');
+  
+  if (checkSeen()) {
+    btnSeen.innerText = 'Seen';
+  } else {
+    btnSeen.innerText = 'Not seen';
+  }
+
+  btnSeen.addEventListener('click', () => {
+    movie.haveSeen = !movie.haveSeen;
+    if (btnSeen.innerText === 'Seen') {
+      btnSeen.innerText = 'Not seen';
+    } else {
+      btnSeen.innerText = 'Seen';
+    }
+  })
+
   btnRemove.addEventListener('click', () => { 
     movie.remove();
     (document.getElementById(`${movie.title}`)).remove();
   });
 }
 
-const renderLibrary = () => {
-  for (i = 0; i < library.length; i++) {
-    renderMovie(library[i]);
-}}
-
 const submitMovie = () => {
-  library.unshift(createMovie());
-  renderMovie(library[0]);
+  library.push(createMovie());
+  renderMovie(library[library.length - 1]);
   const inputs = document.querySelectorAll('input');
   inputs.forEach(input => {
     input.value = '';
     input.checked = false;
   })
 }
+
+const renderLibrary = () => {
+  for (i = 0; i < library.length; i++) {
+    renderMovie(library[i]);
+}}
 
 /* ************************************
 ** Default library setup
