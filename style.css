@@ -5,7 +5,7 @@ h1 {
   font-weight: bold;
 }
 
-.navbar>.container-fluid {
+.navbar>.container {
   flex-wrap: nowrap;
 }
 
@@ -14,13 +14,50 @@ main {
 }
 
 .modal-header {
-  border-bottom: none;
+  border-bottom: 1px solid #212529;
+}
+
+.card-header {
+  height: 40%;
+}
+
+h5 {
+  font-weight: bolder;
+  font-size: 1.8rem;
+  font-family: 'MedievalSharp'!important;
+}
+
+h6 {
+  font-family: 'MedievalSharp'!important;
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.form-label,
+.form-check-label {
+  color: #212529;
+  font-size: 1.3rem;
+  font-family: 'MedievalSharp'!important;
 }
 
 .modal-footer {
-  border-top: none;
+  border-top: 1px solid #212529;
+}
+
+.btn-outline-success {
+  color: beige;
+}
+
+button {
+  font-family: 'MedievalSharp'!important;
 }
 
 .btn-outline-dark:hover {
   color: #ffc107;
+}
+
+#btn-add {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
 }
