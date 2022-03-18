@@ -17,6 +17,10 @@ main {
   border-bottom: 1px solid #212529;
 }
 
+.modal-footer {
+  border-top: 1px solid #212529;
+}
+
 .card-header {
   height: 40%;
 }
@@ -40,20 +44,8 @@ h6 {
   font-family: 'MedievalSharp'!important;
 }
 
-.modal-footer {
-  border-top: 1px solid #212529;
-}
-
-.btn-outline-success {
-  color: beige;
-}
-
 button {
   font-family: 'MedievalSharp'!important;
-}
-
-.btn-outline-dark:hover {
-  color: #ffc107;
 }
 
 #btn-add {
