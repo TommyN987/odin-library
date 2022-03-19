@@ -95,6 +95,7 @@ const renderMovie = (movie) => {
 }
 
 const submitMovie = () => {
+  e.preventDefault();
   library.push(createMovie());
   renderMovie(library[library.length - 1]);
   const inputs = document.querySelectorAll('input');
