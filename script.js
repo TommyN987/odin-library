@@ -15,7 +15,7 @@ class Movie {
       if (this.haveSeen) {
         seenStatus = 'seen it';
       } else seenStatus = 'not seen it yet';
-      return `This is ${this.title} (${year}) by ${this.director}, it's ${this.minutes} minutes long, and I have ${seenStatus}`;
+      return `This is ${this.title} (${year}) by ${this.director}, it's ${this.minutes} minutes long, and I have ${seenStatus}.`;
     };
     this.remove = () => {
       library.splice(library.indexOf(this), 1);
@@ -58,6 +58,7 @@ const createMovie = () => {
 };
 
 const renderMovie = (movie) => {
+  const id = movie.title.replaceAll(/\s/g, '-');
   container.insertAdjacentHTML(
     'afterbegin',
     `<div class="col-md-6 col-lg-3 card bg-dark bg-gradient border-warning" id="${movie.id}">
@@ -67,17 +68,18 @@ const renderMovie = (movie) => {
         <h6 class="card-subtitle mb-2">${movie.year}</h6>
       </div>
       <div class="card-body">
-        <p class="card-text">${movie.info()}</p>
+        <p id='text-${id}' class="card-text">${movie.info()}</p>
         <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-success mx-1" id="btn-seen"></button>
-          <button type="button" class="btn btn-danger mx-1">Delete</button>
+          <button type="button" class="btn btn-success mx-1" id="btn-seen-${id}"></button>
+          <button type="button" class="btn btn-danger mx-1" id='btn-danger-${id}'>Delete</button>
         </div>
       </div>
     </div>`
   );
 
-  const btnRemove = document.querySelector('.btn-danger');
-  const btnSeen = document.getElementById('btn-seen');
+  const btnRemove = document.getElementById(`btn-danger-${id}`);
+  const btnSeen = document.getElementById(`btn-seen-${id}`);
+  const movieDescription = document.getElementById(`text-${id}`);
 
   if (checkSeen()) {
     btnSeen.innerText = 'Seen';
@@ -92,6 +94,7 @@ const renderMovie = (movie) => {
     } else {
       btnSeen.innerText = 'Seen';
     }
+    movieDescription.innerText = movie.info();
   });
 
   btnRemove.addEventListener('click', () => {
