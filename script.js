@@ -1,32 +1,31 @@
 /* ************************************
-** Movie constructor
-************************************** */
+ ** Movie constructor
+ ************************************** */
 
 class Movie {
   constructor(title, director, year, minutes, haveSeen = true) {
-    this.title = title
-    this.director = director
-    this.year = year
-    this.minutes = minutes
-    this.haveSeen = haveSeen
-    this.id = title
+    this.title = title;
+    this.director = director;
+    this.year = year;
+    this.minutes = minutes;
+    this.haveSeen = haveSeen;
+    this.id = title;
     this.info = () => {
       let seenStatus;
       if (this.haveSeen) {
         seenStatus = 'seen it';
-      } else
-        seenStatus = 'not seen it yet';
-      return `This is ${this.title} (${year}) by ${this.director}, it's ${this.minutes} minutes long, and I have ${seenStatus}`
-    }
+      } else seenStatus = 'not seen it yet';
+      return `This is ${this.title} (${year}) by ${this.director}, it's ${this.minutes} minutes long, and I have ${seenStatus}`;
+    };
     this.remove = () => {
-      library.splice(library.indexOf(this), 1)
-    }
+      library.splice(library.indexOf(this), 1);
+    };
   }
 }
 
 /* ************************************
-** DOM elements
-************************************** */
+ ** DOM elements
+ ************************************** */
 
 const library = [];
 const container = document.getElementById('container');
@@ -40,20 +39,27 @@ const statusNotSeen = document.getElementById('not-seen');
 const btnSubmitMovie = document.getElementById('btn-submit');
 
 /* ************************************
-** Functions
-************************************** */
+ ** Functions
+ ************************************** */
 
-const checkSeen = () => {
-  return statusNotSeen.checked ? false : true;
-}
+const checkSeen = () => statusNotSeen.checked ? false : true;
 
 const createMovie = () => {
-  const addition = new Movie(movieTitle.value, movieDirector.value, movieYear.value, duration.value, checkSeen());
+  if (movieTitle.value && movieDirector.value) {
+  const addition = new Movie(
+    movieTitle.value,
+    movieDirector.value,
+    movieYear.value,
+    duration.value,
+    checkSeen()
+  );
   return addition;
 }
+};
 
 const renderMovie = (movie) => {
-  container.insertAdjacentHTML("afterbegin",
+  container.insertAdjacentHTML(
+    'afterbegin',
     `<div class="col-md-6 col-lg-3 card bg-dark bg-gradient border-warning" id="${movie.id}">
       <div class="card-header pt-4">
         <h5 class="card-title">${movie.title}</h5>
@@ -68,11 +74,11 @@ const renderMovie = (movie) => {
         </div>
       </div>
     </div>`
-  )
+  );
 
   const btnRemove = document.querySelector('.btn-danger');
   const btnSeen = document.getElementById('btn-seen');
-  
+
   if (checkSeen()) {
     btnSeen.innerText = 'Seen';
   } else {
@@ -86,42 +92,43 @@ const renderMovie = (movie) => {
     } else {
       btnSeen.innerText = 'Seen';
     }
-  })
-
-  btnRemove.addEventListener('click', () => { 
-    movie.remove();
-    (document.getElementById(`${movie.title}`)).remove();
   });
-}
+
+  btnRemove.addEventListener('click', () => {
+    movie.remove();
+    document.getElementById(`${movie.title}`).remove();
+  });
+};
 
 const submitMovie = () => {
   library.push(createMovie());
   renderMovie(library[library.length - 1]);
   const inputs = document.querySelectorAll('input');
-  inputs.forEach(input => {
+  inputs.forEach((input) => {
     input.value = '';
     input.checked = false;
-  })
-}
+  });
+};
 
 const renderLibrary = () => {
   for (i = 0; i < library.length; i++) {
     renderMovie(library[i]);
-}}
+  }
+};
 
 /* ************************************
-** Default library setup
-************************************** */
+ ** Default library setup
+ ************************************** */
 
-const enterTheVoid = new Movie ('Enter the Void', 'Gaspar Noé', 2009, 161);
-const oldboy = new Movie ('Oldboy', 'Park Chan-wook', 2003, 120);
+const enterTheVoid = new Movie('Enter the Void', 'Gaspar Noé', 2009, 161);
+const oldboy = new Movie('Oldboy', 'Park Chan-wook', 2003, 120);
 
 library.push(enterTheVoid, oldboy);
 
 renderLibrary();
 
 /* ************************************
-** Event listeners
-************************************** */
+ ** Event listeners
+ ************************************** */
 
 btnSubmitMovie.addEventListener('click', submitMovie);

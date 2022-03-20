@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 h1 {
-  font-family: 'MedievalSharp'!important;
+  font-family: 'MedievalSharp' !important;
   font-weight: bold;
 }
 
-.navbar>.container {
+.navbar > .container {
   flex-wrap: nowrap;
 }
 
@@ -28,11 +28,11 @@ main {
 h5 {
   font-weight: bolder;
   font-size: 1.8rem;
-  font-family: 'MedievalSharp'!important;
+  font-family: 'MedievalSharp' !important;
 }
 
 h6 {
-  font-family: 'MedievalSharp'!important;
+  font-family: 'MedievalSharp' !important;
   font-weight: bold;
   color: #ffc107;
 }
@@ -41,11 +41,11 @@ h6 {
 .form-check-label {
   color: #212529;
   font-size: 1.3rem;
-  font-family: 'MedievalSharp'!important;
+  font-family: 'MedievalSharp' !important;
 }
 
 button {
-  font-family: 'MedievalSharp'!important;
+  font-family: 'MedievalSharp' !important;
 }
 
 #btn-add {
@@ -55,5 +55,18 @@ button {
 }
 
 #container {
-  gap: 0rem;
+  gap: 1rem;
 }
+
+@media (min-width: 768px) {
+  .col-md-6 {
+    width: calc(50% - 1rem);
+  }
+} 
+
+@media (min-width: 992px) {
+  .col-lg-3 {
+    width: calc(25% - 1rem);
+  }
+}
+

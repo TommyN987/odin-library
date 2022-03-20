@@ -16,7 +16,10 @@
 	<body class="bg-dark">
 		<nav class="navbar navbar-expand-sm bg-warning">
 			<div class="container-fluid">
-				<a title="Click here for GitHub repo" class="navbar-brand text-warning" href="https://github.com/TommyN987/odin-library"
+				<a
+					title="Click here for GitHub repo"
+					class="navbar-brand text-warning"
+					href="https://github.com/TommyN987/odin-library"
 					><img src="./img/loki-4281072.svg" alt="" /> Loki's
 				</a>
 				<div id="mynavbar">
@@ -49,19 +52,19 @@
 			>
 				<div class="modal-dialog" id="modal">
 					<div class="modal-content bg-warning">
-						<div class="modal-header">
-							<h5 class="modal-title text-dark" id="exampleModalLabel">
-								Add Movie
-							</h5>
-							<button
-								type="button"
-								class="btn-close"
-								data-bs-dismiss="modal"
-								aria-label="Close"
-							></button>
-						</div>
-						<div class="modal-body border-dark">
-							<form action="#">
+						<form action="#" method="post">
+							<div class="modal-header">
+								<h5 class="modal-title text-dark" id="exampleModalLabel">
+									Add Movie
+								</h5>
+								<button
+									type="button"
+									class="btn-close"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								></button>
+							</div>
+							<div class="modal-body border-dark">
 								<div class="mt-3">
 									<label for="title" class="form-label">Movie Title</label>
 									<input
@@ -70,6 +73,7 @@
 										id="title"
 										name="title"
 										placeholder="Enter movie title"
+										required
 									/>
 								</div>
 								<div class="mt-4">
@@ -80,6 +84,7 @@
 										id="director"
 										name="director"
 										placeholder="Enter director"
+										required
 									/>
 								</div>
 								<div class="mt-4">
@@ -90,6 +95,7 @@
 										id="year"
 										name="year"
 										placeholder="Enter year of release"
+										required
 									/>
 								</div>
 								<div class="mt-4">
@@ -100,6 +106,7 @@
 										id="duration"
 										name="duration"
 										placeholder="Enter duration in minutes"
+										required
 									/>
 								</div>
 								<div class="mt-4">
@@ -111,6 +118,7 @@
 											name="haveSeen"
 											id="seen"
 											value="true"
+											checked
 										/>
 										<label class="form-check-label" for="seen">Yes</label>
 									</div>
@@ -122,23 +130,21 @@
 											id="not-seen"
 											value="false"
 										/>
-										<label class="form-check-label" for="not-seen"
-											>No</label
-										>
+										<label class="form-check-label" for="not-seen">No</label>
 									</div>
 								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button
-								type="button"
-								class="btn btn-lg btn-outline-dark m-auto"
-								id="btn-submit"
-								data-bs-dismiss="modal"
-							>
-								Submit
-							</button>
-						</div>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="submit"
+									class="btn btn-lg btn-outline-dark m-auto"
+									id="btn-submit"
+									data-bs-dismiss="modal"
+								>
+									Submit
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
